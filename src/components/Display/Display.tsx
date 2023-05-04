@@ -1,9 +1,21 @@
-import React from 'react'
+import { FC } from "react";
 
-const Display = () => {
-  return (
-    <div>Display</div>
-  )
+interface iDisplay {
+  currency: string;
+  digits: number;
+  color: string;
+  text: string;
 }
 
-export default Display
+const Display: FC<iDisplay> = ({ currency, digits, color, text }) => {
+  return (
+    <div className="flex flex-col items-center">
+      <h4 className={`text-lg ${color}`}>
+        {currency} {digits}
+      </h4>
+      <p className="mt-2">{text}</p>
+    </div>
+  );
+};
+
+export default Display;
