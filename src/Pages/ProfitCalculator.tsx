@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import InputField from "../components/Form/InputField";
 import Display from "../components/Display/Display";
+import Dropdown from "../components/Form/Dropdown";
+import { availableCurrencies } from "../Constants";
 
 interface iData {
   buy: number;
@@ -22,6 +24,7 @@ const initialState: iData = {
   currency: "$",
 };
 
+
 // we buy low, sell high
 // buy, sell, quantity
 
@@ -42,6 +45,7 @@ const ProfitCalculator = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setData(initialState)
   };
 
   useEffect(() => {
@@ -66,6 +70,7 @@ const ProfitCalculator = () => {
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+              <Dropdown options={availableCurrencies}/>
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white flex justify-center items-center">
                 Profit Calculator
               </h1>
@@ -106,7 +111,7 @@ const ProfitCalculator = () => {
                 />
               </div>
               <form
-                onChange={handleSubmit}
+                onSubmit={handleSubmit}
                 className="space-y-4 md:space-y-6"
                 action="#"
               >
