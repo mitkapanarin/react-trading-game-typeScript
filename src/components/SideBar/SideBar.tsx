@@ -1,5 +1,3 @@
-import React from "react";
-import NavLink from "./Navlink";
 import { Link } from "react-router-dom";
 
 const SideBar = ({ children }: { children: JSX.Element }) => {
